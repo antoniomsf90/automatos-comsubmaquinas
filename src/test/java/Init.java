@@ -302,12 +302,12 @@ public class Init {
 		Estado q3 = new Estado("q3 TERMO", false, false);
 		Estado q4 = new Estado("q4 TERMO", false, false);
 		Estado q5 = new Estado("q5 TERMO", false, true);
-		q1.addTransicao(new TransicaoPorMaquina(q5, Constante, false));
-		q1.addTransicao(new TransicaoPorMaquina(q5, Variavel, false));
 		q1.addTransicao(new TransicaoPorMaquina(q2, Funcao, false));
 		q2.addTransicao(new TransicaoPorSimbolo(q3, "(", false));
 		q3.addTransicao(new TransicaoPorMaquina(q4, NTermo, false));
 		q4.addTransicao(new TransicaoPorSimbolo(q5, ")", false));
+		q1.addTransicao(new TransicaoPorMaquina(q5, Constante, false));
+		q1.addTransicao(new TransicaoPorMaquina(q5, Variavel, false));
 		termo.setEstadoInicial(q1);
 	}
 

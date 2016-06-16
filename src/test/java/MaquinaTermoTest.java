@@ -35,4 +35,39 @@ public class MaquinaTermoTest extends Init {
 		boolean aceito = Initializer.init(Termo, fita);
 		Assert.assertTrue(aceito);
 	}
+	
+	@Test
+	public void testeTermo5() {
+		Fita fita = new Fita("aaaa(b,c)");
+		boolean aceito = Initializer.init(Termo, fita);
+		Assert.assertTrue(aceito);
+	}
+	
+	@Test
+	public void testeTermo6() {
+		Fita fita = new Fita("aaaa(bccc,cdddd)");
+		boolean aceito = Initializer.init(Termo, fita);
+		Assert.assertTrue(aceito);
+	}
+	
+	@Test
+	public void testeTermo7() {
+		Fita fita = new Fita("aaaa(bccc,cdddd");
+		boolean aceito = Initializer.init(Termo, fita);
+		Assert.assertFalse(aceito);
+	}
+	
+	@Test
+	public void testeTermo8() {
+		Fita fita = new Fita("aaaa(bccc(a,a),cdddd)");
+		boolean aceito = Initializer.init(Termo, fita);
+		Assert.assertTrue(aceito);
+	}
+	
+	@Test
+	public void testeTermo9() {
+		Fita fita = new Fita("aaaa(bccc(a(a,b,c,d),a),cdddd)");
+		boolean aceito = Initializer.init(Termo, fita);
+		Assert.assertTrue(aceito);
+	}
 }

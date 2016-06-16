@@ -57,10 +57,14 @@ public class Estado {
 				System.out.println(espaco+"[ESTADO "+nome+"] caractere consumido="+fita.getConsumido());
 				if(fita.getConsumido()==null) {
 					System.out.println(espaco+"[ESTADO "+nome+"] proximo eh "+(proximo.isEhFinal() ? "final": "nao eh final"));
-					return proximo.isEhFinal();
+					if(proximo.isEhFinal()) {
+						return true;
+					}
 				} else {
 					System.out.println(espaco+"[ESTADO "+nome+"] chamando proximo para transitar");
-					return proximo.transitar(fita, espaco+"\t");
+					if(proximo.transitar(fita, espaco+"\t")) {
+						return true;
+					}
 				}
 			}
 			System.out.println(espaco+"[ESTADO "+nome+"] voltando a posicao da cabeca de "+fita.getPosicaoCabeca()+" para "+posicao);
