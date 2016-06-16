@@ -239,10 +239,10 @@ public class Init {
 		Estado q1 = new Estado("q1 funcao", true, false);
 		Estado q2 = new Estado("q2 funcao", false, false);
 		Estado q3 = new Estado("q3 funcao", false, true);
-		q1.addTransicao(new TransicaoPorMaquina(q3, Alfa_ao, false));
+		q1.addTransicao(new TransicaoPorMaquina(q3, Alfa_ao, true));
 		q1.addTransicao(new TransicaoPorMaquina(q2, Alfa_pz, false));
-		q2.addTransicao(new TransicaoPorMaquina(q3, AlfaUnder, false));
-		q3.addTransicao(new TransicaoPorMaquina(q3, AlfaUnder, false));
+		q2.addTransicao(new TransicaoPorMaquina(q3, AlfaUnder, true));
+		q3.addTransicao(new TransicaoPorMaquina(q3, AlfaUnder, true));
 		funcao.setEstadoInicial(q1);
 	}
 
@@ -251,7 +251,7 @@ public class Init {
 		Estado q2 = new Estado("q2 NTERMO", false, true);
 		Estado q3 = new Estado("q3 NTERMO", false, false);
 		q1.addTransicao(new TransicaoPorMaquina(q2, Termo, false));
-		q2.addTransicao(new TransicaoPorSimbolo(q3, ",", false));
+		q2.addTransicao(new TransicaoPorSimbolo(q3, ",", true));
 		q3.addTransicao(new TransicaoPorMaquina(q2, NTermo, false));
 		nTermo.setEstadoInicial(q1);
 	}
@@ -303,9 +303,9 @@ public class Init {
 		Estado q4 = new Estado("q4 TERMO", false, false);
 		Estado q5 = new Estado("q5 TERMO", false, true);
 		q1.addTransicao(new TransicaoPorMaquina(q2, Funcao, false));
-		q2.addTransicao(new TransicaoPorSimbolo(q3, "(", false));
+		q2.addTransicao(new TransicaoPorSimbolo(q3, "(", true));
 		q3.addTransicao(new TransicaoPorMaquina(q4, NTermo, false));
-		q4.addTransicao(new TransicaoPorSimbolo(q5, ")", false));
+		q4.addTransicao(new TransicaoPorSimbolo(q5, ")", true));
 		q1.addTransicao(new TransicaoPorMaquina(q5, Constante, false));
 		q1.addTransicao(new TransicaoPorMaquina(q5, Variavel, false));
 		termo.setEstadoInicial(q1);

@@ -1,6 +1,5 @@
 package maquina;
 
-import maquina.exception.FimDeFitaException;
 
 public abstract class AbstractTransicao {
 	protected Estado proximo;

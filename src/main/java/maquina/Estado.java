@@ -45,6 +45,7 @@ public class Estado {
 	}
 	
 	public boolean transitar(Fita fita, String espaco) {
+		String token = Pilha.instancia.getPilha();
 		System.out.println(espaco+"[ESTADO "+nome+"]");
 		Estado proximo;
 		int posicao = fita.getPosicaoCabeca();
@@ -58,9 +59,14 @@ public class Estado {
 				if(fita.getConsumido()==null) {
 					System.out.println(espaco+"[ESTADO "+nome+"] proximo eh "+(proximo.isEhFinal() ? "final": "nao eh final"));
 					if(proximo.isEhFinal()) {
+//						if(transicao.isCriaToken()) {
+//							Linha l = new Linha(Pilha.instancia.getString(), 0);
+//							Tabela.instancia.addLinha(l);
+//						}
 						return true;
 					}
 				} else {
+//					Pilha.instancia.empilha(fita.getConsumido());
 					System.out.println(espaco+"[ESTADO "+nome+"] chamando proximo para transitar");
 					if(proximo.transitar(fita, espaco+"\t")) {
 						return true;
@@ -69,6 +75,7 @@ public class Estado {
 			}
 			System.out.println(espaco+"[ESTADO "+nome+"] voltando a posicao da cabeca de "+fita.getPosicaoCabeca()+" para "+posicao);
 			fita.setPosicaoCabeca(posicao);
+			Pilha.instancia.setPilha(token);
 		}
 		System.out.println(espaco+"[ESTADO "+nome+"] retornando se o estado atual eh final: "+ehFinal);
 		if(ehFinal && fita.getConsumido()!=null) {
